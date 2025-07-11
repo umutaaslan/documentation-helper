@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+
+<html data-content_root="../../" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-9B66JQQH2F"></script>
+<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9B66JQQH2F');
+    </script>
+<title>json.encoder — 🦜🔗 LangChain  documentation</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+<!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+<noscript>
+<style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+</noscript>
+<!-- Loaded before other Sphinx assets -->
+<link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet"/>
+<link href="../../_static/pygments.css?v=8f2a1f02" rel="stylesheet" type="text/css"/>
+<link href="../../_static/autodoc_pydantic.css" rel="stylesheet" type="text/css"/>
+<link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+<link href="../../_static/sphinx-design.min.css?v=95c83b7e" rel="stylesheet" type="text/css"/>
+<link href="../../_static/css/custom.css?v=8e9fa5b3" rel="stylesheet" type="text/css"/>
+<!-- So that users can add custom icons -->
+<script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<link as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" rel="preload"/>
+<script src="../../_static/documentation_options.js?v=3b5cce75"></script>
+<script src="../../_static/doctools.js?v=9bcbadda"></script>
+<script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+<script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+<script src="../../_static/copybutton.js?v=f281be69"></script>
+<script src="../../_static/design-tabs.js?v=f930bc37"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '_modules/json/encoder';</script>
+<link href="../../_static/favicon.png" rel="icon"/>
+<link href="../../search.html" rel="search" title="Search"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<meta content="" name="docsearch:version"/>
+<meta content="Jul 10, 2025" name="docbuild:last-update"/>
+</head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<div class="skip-link d-print-none" id="pst-skip-link"><a href="#main-content">Skip to main content</a></div>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>Back to top</button>
+<dialog id="pst-search-dialog">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</dialog>
+<div class="pst-async-banner-revealer d-none">
+<aside aria-label="Version warning" class="d-none d-print-none" id="bd-header-version-warning"></aside>
+</div>
+<header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+<button aria-label="Site navigation" class="pst-navbar-icon sidebar-toggle primary-toggle">
+<span class="fa-solid fa-bars"></span>
+</button>
+<div class="navbar-header-items__start">
+<div class="navbar-item">
+<a class="navbar-brand logo" href="../../index.html">
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-light" src="../../_static/wordmark-api.svg"/>
+<img alt="🦜🔗 LangChain  documentation - Home" class="logo__image only-dark pst-js-only" src="../../_static/wordmark-api-dark.svg"/>
+</a></div>
+</div>
+<div class="navbar-header-items">
+<div class="me-auto navbar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="navbar-header-items__end">
+<div class="navbar-item navbar-persistent--container">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="navbar-persistent--mobile">
+<form action="../../search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" name="q" placeholder="Search" spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</div>
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<dialog id="pst-primary-sidebar-modal"></dialog>
+<div class="bd-sidebar-primary bd-sidebar hide-on-wide" id="pst-primary-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+<div class="sidebar-header-items__center">
+<div class="navbar-item">
+<nav>
+<ul class="bd-navbar-elements navbar-nav">
+<li class="nav-item">
+<a class="nav-link nav-internal" href="../../reference.html">
+    Reference
+  </a>
+</li>
+</ul>
+</nav></div>
+</div>
+<div class="sidebar-header-items__end">
+<div class="navbar-item"><!-- This will display a link to LangChain docs -->
+<head>
+<style>
+        .text-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit;        /* Inherit color from parent element */
+        }
+    </style>
+</head>
+<body>
+<a class="text-link" href="https://python.langchain.com/">Docs</a>
+</body></div>
+<div class="navbar-item">
+<button aria-label="Color mode" class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" data-bs-placement="bottom" data-bs-title="Color mode" data-bs-toggle="tooltip">
+<i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light" title="Light"></i>
+<i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark" title="Dark"></i>
+<i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto" title="System Settings"></i>
+</button></div>
+<div class="navbar-item"><ul aria-label="Quick Links" class="navbar-icon-links">
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://github.com/langchain-ai/langchain" rel="noopener" target="_blank" title="GitHub"><i aria-hidden="true" class="fa-brands fa-square-github fa-lg"></i>
+<span class="sr-only">GitHub</span></a>
+</li>
+<li class="nav-item">
+<a class="nav-link pst-navbar-icon" data-bs-placement="bottom" data-bs-toggle="tooltip" href="https://twitter.com/langchainai" rel="noopener" target="_blank" title="X / Twitter"><i aria-hidden="true" class="fab fa-twitter-square fa-lg"></i>
+<span class="sr-only">X / Twitter</span></a>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+<div class="sidebar-primary-item">
+<div class="flat" data-ea-manual="true" data-ea-publisher="readthedocs" data-ea-type="readthedocs-sidebar" id="ethical-ad-placement">
+</div></div>
+</div>
+</div>
+<main class="bd-main" id="main-content" role="main">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item">
+<nav aria-label="Breadcrumb" class="d-print-none">
+<ul class="bd-breadcrumbs">
+<li class="breadcrumb-item breadcrumb-home">
+<a aria-label="Home" class="nav-link" href="../../index.html">
+<i class="fa-solid fa-home"></i>
+</a>
+</li>
+<li class="breadcrumb-item"><a class="nav-link" href="../index.html">Module code</a></li>
+<li aria-current="page" class="breadcrumb-item active"><span class="ellipsis">json.encoder</span></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<h1>Source code for json.encoder</h1><div class="highlight"><pre>
+<span></span><span class="sd">"""Implementation of JSONEncoder</span>
+<span class="sd">"""</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">_json</span><span class="w"> </span><span class="kn">import</span> <span class="n">encode_basestring_ascii</span> <span class="k">as</span> <span class="n">c_encode_basestring_ascii</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">c_encode_basestring_ascii</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">_json</span><span class="w"> </span><span class="kn">import</span> <span class="n">encode_basestring</span> <span class="k">as</span> <span class="n">c_encode_basestring</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">c_encode_basestring</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">_json</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_encoder</span> <span class="k">as</span> <span class="n">c_make_encoder</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">c_make_encoder</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">ESCAPE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'[\x00-\x1f</span><span class="se">\\</span><span class="s1">"\b\f\n\r\t]'</span><span class="p">)</span>
+<span class="n">ESCAPE_ASCII</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'([</span><span class="se">\\</span><span class="s1">"]|[^\ -~])'</span><span class="p">)</span>
+<span class="n">HAS_UTF8</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">b</span><span class="s1">'[</span><span class="se">\x80</span><span class="s1">-</span><span class="se">\xff</span><span class="s1">]'</span><span class="p">)</span>
+<span class="n">ESCAPE_DCT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'</span><span class="se">\\</span><span class="s1">'</span><span class="p">:</span> <span class="s1">'</span><span class="se">\\\\</span><span class="s1">'</span><span class="p">,</span>
+    <span class="s1">'"'</span><span class="p">:</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">"'</span><span class="p">,</span>
+    <span class="s1">'</span><span class="se">\b</span><span class="s1">'</span><span class="p">:</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">b'</span><span class="p">,</span>
+    <span class="s1">'</span><span class="se">\f</span><span class="s1">'</span><span class="p">:</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">f'</span><span class="p">,</span>
+    <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">:</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">n'</span><span class="p">,</span>
+    <span class="s1">'</span><span class="se">\r</span><span class="s1">'</span><span class="p">:</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">r'</span><span class="p">,</span>
+    <span class="s1">'</span><span class="se">\t</span><span class="s1">'</span><span class="p">:</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">t'</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x20</span><span class="p">):</span>
+    <span class="n">ESCAPE_DCT</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">u</span><span class="si">{0:04x}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="c1">#ESCAPE_DCT.setdefault(chr(i), '\\u%04x' % (i,))</span>
+<span class="k">del</span> <span class="n">i</span>
+
+<span class="n">INFINITY</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">py_encode_basestring</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return a JSON representation of a Python string</span>
+
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ESCAPE_DCT</span><span class="p">[</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="s1">'"'</span> <span class="o">+</span> <span class="n">ESCAPE</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">replace</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'"'</span>
+
+
+<span class="n">encode_basestring</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_encode_basestring</span> <span class="ow">or</span> <span class="n">py_encode_basestring</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">py_encode_basestring_ascii</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return an ASCII-only JSON representation of a Python string</span>
+
+<span class="sd">    """</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="n">match</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ESCAPE_DCT</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mh">0x10000</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">u</span><span class="si">{0:04x}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+                <span class="c1">#return '\\u%04x' % (n,)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># surrogate pair</span>
+                <span class="n">n</span> <span class="o">-=</span> <span class="mh">0x10000</span>
+                <span class="n">s1</span> <span class="o">=</span> <span class="mh">0xd800</span> <span class="o">|</span> <span class="p">((</span><span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x3ff</span><span class="p">)</span>
+                <span class="n">s2</span> <span class="o">=</span> <span class="mh">0xdc00</span> <span class="o">|</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mh">0x3ff</span><span class="p">)</span>
+                <span class="k">return</span> <span class="s1">'</span><span class="se">\\</span><span class="s1">u</span><span class="si">{0:04x}</span><span class="se">\\</span><span class="s1">u</span><span class="si">{1:04x}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">'"'</span> <span class="o">+</span> <span class="n">ESCAPE_ASCII</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">replace</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'"'</span>
+
+
+<span class="n">encode_basestring_ascii</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">c_encode_basestring_ascii</span> <span class="ow">or</span> <span class="n">py_encode_basestring_ascii</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">JSONEncoder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Extensible JSON &lt;https://json.org&gt; encoder for Python data structures.</span>
+
+<span class="sd">    Supports the following objects and types by default:</span>
+
+<span class="sd">    +-------------------+---------------+</span>
+<span class="sd">    | Python            | JSON          |</span>
+<span class="sd">    +===================+===============+</span>
+<span class="sd">    | dict              | object        |</span>
+<span class="sd">    +-------------------+---------------+</span>
+<span class="sd">    | list, tuple       | array         |</span>
+<span class="sd">    +-------------------+---------------+</span>
+<span class="sd">    | str               | string        |</span>
+<span class="sd">    +-------------------+---------------+</span>
+<span class="sd">    | int, float        | number        |</span>
+<span class="sd">    +-------------------+---------------+</span>
+<span class="sd">    | True              | true          |</span>
+<span class="sd">    +-------------------+---------------+</span>
+<span class="sd">    | False             | false         |</span>
+<span class="sd">    +-------------------+---------------+</span>
+<span class="sd">    | None              | null          |</span>
+<span class="sd">    +-------------------+---------------+</span>
+
+<span class="sd">    To extend this to recognize other objects, subclass and implement a</span>
+<span class="sd">    ``.default()`` method with another method that returns a serializable</span>
+<span class="sd">    object for ``o`` if possible, otherwise it should call the superclass</span>
+<span class="sd">    implementation (to raise ``TypeError``).</span>
+
+<span class="sd">    """</span>
+    <span class="n">item_separator</span> <span class="o">=</span> <span class="s1">', '</span>
+    <span class="n">key_separator</span> <span class="o">=</span> <span class="s1">': '</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">skipkeys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">check_circular</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">separators</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Constructor for JSONEncoder, with sensible defaults.</span>
+
+<span class="sd">        If skipkeys is false, then it is a TypeError to attempt</span>
+<span class="sd">        encoding of keys that are not str, int, float or None.  If</span>
+<span class="sd">        skipkeys is True, such items are simply skipped.</span>
+
+<span class="sd">        If ensure_ascii is true, the output is guaranteed to be str</span>
+<span class="sd">        objects with all incoming non-ASCII characters escaped.  If</span>
+<span class="sd">        ensure_ascii is false, the output can contain non-ASCII characters.</span>
+
+<span class="sd">        If check_circular is true, then lists, dicts, and custom encoded</span>
+<span class="sd">        objects will be checked for circular references during encoding to</span>
+<span class="sd">        prevent an infinite recursion (which would cause an RecursionError).</span>
+<span class="sd">        Otherwise, no such check takes place.</span>
+
+<span class="sd">        If allow_nan is true, then NaN, Infinity, and -Infinity will be</span>
+<span class="sd">        encoded as such.  This behavior is not JSON specification compliant,</span>
+<span class="sd">        but is consistent with most JavaScript based encoders and decoders.</span>
+<span class="sd">        Otherwise, it will be a ValueError to encode such floats.</span>
+
+<span class="sd">        If sort_keys is true, then the output of dictionaries will be</span>
+<span class="sd">        sorted by key; this is useful for regression tests to ensure</span>
+<span class="sd">        that JSON serializations can be compared on a day-to-day basis.</span>
+
+<span class="sd">        If indent is a non-negative integer, then JSON array</span>
+<span class="sd">        elements and object members will be pretty-printed with that</span>
+<span class="sd">        indent level.  An indent level of 0 will only insert newlines.</span>
+<span class="sd">        None is the most compact representation.</span>
+
+<span class="sd">        If specified, separators should be an (item_separator, key_separator)</span>
+<span class="sd">        tuple.  The default is (', ', ': ') if *indent* is ``None`` and</span>
+<span class="sd">        (',', ': ') otherwise.  To get the most compact JSON representation,</span>
+<span class="sd">        you should specify (',', ':') to eliminate whitespace.</span>
+
+<span class="sd">        If specified, default is a function that gets called for objects</span>
+<span class="sd">        that can't otherwise be serialized.  It should return a JSON encodable</span>
+<span class="sd">        version of the object or raise a ``TypeError``.</span>
+
+<span class="sd">        """</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">skipkeys</span> <span class="o">=</span> <span class="n">skipkeys</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ensure_ascii</span> <span class="o">=</span> <span class="n">ensure_ascii</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">check_circular</span> <span class="o">=</span> <span class="n">check_circular</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allow_nan</span> <span class="o">=</span> <span class="n">allow_nan</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sort_keys</span> <span class="o">=</span> <span class="n">sort_keys</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indent</span> <span class="o">=</span> <span class="n">indent</span>
+        <span class="k">if</span> <span class="n">separators</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">item_separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">key_separator</span> <span class="o">=</span> <span class="n">separators</span>
+        <span class="k">elif</span> <span class="n">indent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">item_separator</span> <span class="o">=</span> <span class="s1">','</span>
+        <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">default</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Implement this method in a subclass such that it returns</span>
+<span class="sd">        a serializable object for ``o``, or calls the base implementation</span>
+<span class="sd">        (to raise a ``TypeError``).</span>
+
+<span class="sd">        For example, to support arbitrary iterators, you could</span>
+<span class="sd">        implement default like this::</span>
+
+<span class="sd">            def default(self, o):</span>
+<span class="sd">                try:</span>
+<span class="sd">                    iterable = iter(o)</span>
+<span class="sd">                except TypeError:</span>
+<span class="sd">                    pass</span>
+<span class="sd">                else:</span>
+<span class="sd">                    return list(iterable)</span>
+<span class="sd">                # Let the base class default method raise the TypeError</span>
+<span class="sd">                return super().default(o)</span>
+
+<span class="sd">        """</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Object of type </span><span class="si">{</span><span class="n">o</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> '</span>
+                        <span class="sa">f</span><span class="s1">'is not JSON serializable'</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Return a JSON string representation of a Python data structure.</span>
+
+<span class="sd">        &gt;&gt;&gt; from json.encoder import JSONEncoder</span>
+<span class="sd">        &gt;&gt;&gt; JSONEncoder().encode({"foo": ["bar", "baz"]})</span>
+<span class="sd">        '{"foo": ["bar", "baz"]}'</span>
+
+<span class="sd">        """</span>
+        <span class="c1"># This is for extremely simple cases and benchmarks.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensure_ascii</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">encode_basestring_ascii</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">encode_basestring</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="c1"># This doesn't pass the iterator directly to ''.join() because the</span>
+        <span class="c1"># exceptions aren't as detailed.  The list call should be roughly</span>
+        <span class="c1"># equivalent to the PySequence_Fast that ''.join() would do.</span>
+        <span class="n">chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterencode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">_one_shot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="n">chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">iterencode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">_one_shot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Encode the given object and yield each string</span>
+<span class="sd">        representation as available.</span>
+
+<span class="sd">        For example::</span>
+
+<span class="sd">            for chunk in JSONEncoder().iterencode(bigobject):</span>
+<span class="sd">                mysocket.write(chunk)</span>
+
+<span class="sd">        """</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_circular</span><span class="p">:</span>
+            <span class="n">markers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">markers</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ensure_ascii</span><span class="p">:</span>
+            <span class="n">_encoder</span> <span class="o">=</span> <span class="n">encode_basestring_ascii</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_encoder</span> <span class="o">=</span> <span class="n">encode_basestring</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">floatstr</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">allow_nan</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">allow_nan</span><span class="p">,</span>
+                <span class="n">_repr</span><span class="o">=</span><span class="nb">float</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">,</span> <span class="n">_inf</span><span class="o">=</span><span class="n">INFINITY</span><span class="p">,</span> <span class="n">_neginf</span><span class="o">=-</span><span class="n">INFINITY</span><span class="p">):</span>
+            <span class="c1"># Check for specials.  Note that this type of test is processor</span>
+            <span class="c1"># and/or platform-specific, so do tests which don't depend on the</span>
+            <span class="c1"># internals.</span>
+
+            <span class="k">if</span> <span class="n">o</span> <span class="o">!=</span> <span class="n">o</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="s1">'NaN'</span>
+            <span class="k">elif</span> <span class="n">o</span> <span class="o">==</span> <span class="n">_inf</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="s1">'Infinity'</span>
+            <span class="k">elif</span> <span class="n">o</span> <span class="o">==</span> <span class="n">_neginf</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="s1">'-Infinity'</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">_repr</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_nan</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">"Out of range float values are not JSON compliant: "</span> <span class="o">+</span>
+                    <span class="nb">repr</span><span class="p">(</span><span class="n">o</span><span class="p">))</span>
+
+            <span class="k">return</span> <span class="n">text</span>
+
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">_one_shot</span> <span class="ow">and</span> <span class="n">c_make_encoder</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">_iterencode</span> <span class="o">=</span> <span class="n">c_make_encoder</span><span class="p">(</span>
+                <span class="n">markers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">,</span> <span class="n">_encoder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">key_separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort_keys</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">skipkeys</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">allow_nan</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_iterencode</span> <span class="o">=</span> <span class="n">_make_iterencode</span><span class="p">(</span>
+                <span class="n">markers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">,</span> <span class="n">_encoder</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">,</span> <span class="n">floatstr</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">key_separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_separator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort_keys</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">skipkeys</span><span class="p">,</span> <span class="n">_one_shot</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_iterencode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_make_iterencode</span><span class="p">(</span><span class="n">markers</span><span class="p">,</span> <span class="n">_default</span><span class="p">,</span> <span class="n">_encoder</span><span class="p">,</span> <span class="n">_indent</span><span class="p">,</span> <span class="n">_floatstr</span><span class="p">,</span>
+        <span class="n">_key_separator</span><span class="p">,</span> <span class="n">_item_separator</span><span class="p">,</span> <span class="n">_sort_keys</span><span class="p">,</span> <span class="n">_skipkeys</span><span class="p">,</span> <span class="n">_one_shot</span><span class="p">,</span>
+        <span class="c1">## HACK: hand-optimized bytecode; turn globals into locals</span>
+        <span class="ne">ValueError</span><span class="o">=</span><span class="ne">ValueError</span><span class="p">,</span>
+        <span class="nb">dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span>
+        <span class="nb">float</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+        <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span>
+        <span class="nb">int</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+        <span class="nb">isinstance</span><span class="o">=</span><span class="nb">isinstance</span><span class="p">,</span>
+        <span class="nb">list</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span>
+        <span class="nb">str</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+        <span class="nb">tuple</span><span class="o">=</span><span class="nb">tuple</span><span class="p">,</span>
+        <span class="n">_intstr</span><span class="o">=</span><span class="nb">int</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">,</span>
+    <span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">_indent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_indent</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">_indent</span> <span class="o">=</span> <span class="s1">' '</span> <span class="o">*</span> <span class="n">_indent</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_iterencode_list</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="s1">'[]'</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">markers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">markerid</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">markerid</span> <span class="ow">in</span> <span class="n">markers</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Circular reference detected"</span><span class="p">)</span>
+            <span class="n">markers</span><span class="p">[</span><span class="n">markerid</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="s1">'['</span>
+        <span class="k">if</span> <span class="n">_indent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_current_indent_level</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">newline_indent</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="n">_indent</span> <span class="o">*</span> <span class="n">_current_indent_level</span>
+            <span class="n">separator</span> <span class="o">=</span> <span class="n">_item_separator</span> <span class="o">+</span> <span class="n">newline_indent</span>
+            <span class="n">buf</span> <span class="o">+=</span> <span class="n">newline_indent</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">newline_indent</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">separator</span> <span class="o">=</span> <span class="n">_item_separator</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">first</span><span class="p">:</span>
+                <span class="n">first</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">buf</span> <span class="o">=</span> <span class="n">separator</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">buf</span> <span class="o">+</span> <span class="n">_encoder</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">buf</span> <span class="o">+</span> <span class="s1">'null'</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">buf</span> <span class="o">+</span> <span class="s1">'true'</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">buf</span> <span class="o">+</span> <span class="s1">'false'</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="c1"># Subclasses of int/float may override __repr__, but we still</span>
+                <span class="c1"># want to encode them as integers/floats in JSON. One example</span>
+                <span class="c1"># within the standard library is IntEnum.</span>
+                <span class="k">yield</span> <span class="n">buf</span> <span class="o">+</span> <span class="n">_intstr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="c1"># see comment above for int</span>
+                <span class="k">yield</span> <span class="n">buf</span> <span class="o">+</span> <span class="n">_floatstr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">buf</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+                    <span class="n">chunks</span> <span class="o">=</span> <span class="n">_iterencode_list</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="n">chunks</span> <span class="o">=</span> <span class="n">_iterencode_dict</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">chunks</span> <span class="o">=</span> <span class="n">_iterencode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">)</span>
+                <span class="k">yield from</span> <span class="n">chunks</span>
+        <span class="k">if</span> <span class="n">newline_indent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_current_indent_level</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">yield</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="n">_indent</span> <span class="o">*</span> <span class="n">_current_indent_level</span>
+        <span class="k">yield</span> <span class="s1">']'</span>
+        <span class="k">if</span> <span class="n">markers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">markers</span><span class="p">[</span><span class="n">markerid</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_iterencode_dict</span><span class="p">(</span><span class="n">dct</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dct</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="s1">'</span><span class="si">{}</span><span class="s1">'</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">markers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">markerid</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">dct</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">markerid</span> <span class="ow">in</span> <span class="n">markers</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Circular reference detected"</span><span class="p">)</span>
+            <span class="n">markers</span><span class="p">[</span><span class="n">markerid</span><span class="p">]</span> <span class="o">=</span> <span class="n">dct</span>
+        <span class="k">yield</span> <span class="s1">'{'</span>
+        <span class="k">if</span> <span class="n">_indent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_current_indent_level</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">newline_indent</span> <span class="o">=</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="n">_indent</span> <span class="o">*</span> <span class="n">_current_indent_level</span>
+            <span class="n">item_separator</span> <span class="o">=</span> <span class="n">_item_separator</span> <span class="o">+</span> <span class="n">newline_indent</span>
+            <span class="k">yield</span> <span class="n">newline_indent</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">newline_indent</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">item_separator</span> <span class="o">=</span> <span class="n">_item_separator</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">_sort_keys</span><span class="p">:</span>
+            <span class="n">items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dct</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">items</span> <span class="o">=</span> <span class="n">dct</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">pass</span>
+            <span class="c1"># JavaScript is weakly typed for these, so it makes sense to</span>
+            <span class="c1"># also allow them.  Many encoders seem to do something like this.</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="c1"># see comment for int/float in _make_iterencode</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">_floatstr</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s1">'true'</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s1">'false'</span>
+            <span class="k">elif</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="s1">'null'</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="c1"># see comment for int/float in _make_iterencode</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">_intstr</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">_skipkeys</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'keys must be str, int, float, bool or None, '</span>
+                                <span class="sa">f</span><span class="s1">'not </span><span class="si">{</span><span class="n">key</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">first</span><span class="p">:</span>
+                <span class="n">first</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">item_separator</span>
+            <span class="k">yield</span> <span class="n">_encoder</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">_key_separator</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">_encoder</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="s1">'null'</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="s1">'true'</span>
+            <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="s1">'false'</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                <span class="c1"># see comment for int/float in _make_iterencode</span>
+                <span class="k">yield</span> <span class="n">_intstr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="c1"># see comment for int/float in _make_iterencode</span>
+                <span class="k">yield</span> <span class="n">_floatstr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+                    <span class="n">chunks</span> <span class="o">=</span> <span class="n">_iterencode_list</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="n">chunks</span> <span class="o">=</span> <span class="n">_iterencode_dict</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">chunks</span> <span class="o">=</span> <span class="n">_iterencode</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">)</span>
+                <span class="k">yield from</span> <span class="n">chunks</span>
+        <span class="k">if</span> <span class="n">newline_indent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_current_indent_level</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">yield</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span> <span class="o">+</span> <span class="n">_indent</span> <span class="o">*</span> <span class="n">_current_indent_level</span>
+        <span class="k">yield</span> <span class="s1">'}'</span>
+        <span class="k">if</span> <span class="n">markers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">markers</span><span class="p">[</span><span class="n">markerid</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_iterencode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">_encoder</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">o</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="s1">'null'</span>
+        <span class="k">elif</span> <span class="n">o</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="s1">'true'</span>
+        <span class="k">elif</span> <span class="n">o</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="s1">'false'</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="c1"># see comment for int/float in _make_iterencode</span>
+            <span class="k">yield</span> <span class="n">_intstr</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="c1"># see comment for int/float in _make_iterencode</span>
+            <span class="k">yield</span> <span class="n">_floatstr</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+            <span class="k">yield from</span> <span class="n">_iterencode_list</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">yield from</span> <span class="n">_iterencode_dict</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">markers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">markerid</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">markerid</span> <span class="ow">in</span> <span class="n">markers</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Circular reference detected"</span><span class="p">)</span>
+                <span class="n">markers</span><span class="p">[</span><span class="n">markerid</span><span class="p">]</span> <span class="o">=</span> <span class="n">o</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="n">_default</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+            <span class="k">yield from</span> <span class="n">_iterencode</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">_current_indent_level</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">markers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">del</span> <span class="n">markers</span><span class="p">[</span><span class="n">markerid</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">_iterencode</span>
+</pre></div>
+</article>
+</div>
+</div>
+<footer class="bd-footer-content">
+</footer>
+</main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script defer="" src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer="" src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+<footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+<div class="footer-items__start">
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2025, LangChain Inc.
+      <br/>
+</p>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>
